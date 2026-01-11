@@ -1,0 +1,11 @@
+
+### update.md
+
+```md
+## Update Book
+
+```python
+b = Book.objects.get(title="1984")
+b.title = "Nineteen Eighty-Four"
+b.save()
+b.title
