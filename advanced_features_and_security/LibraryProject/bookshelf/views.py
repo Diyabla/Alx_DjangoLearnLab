@@ -75,3 +75,23 @@ def search_books(request):
     # ORM handles parameterization, preventing SQL injection
     books = Book.objects.filter(title__icontains=query)
     return render(request, 'bookshelf/book_list.html', {'books': books, 'query': query})
+
+
+# bookshelf/views.py
+
+from django.shortcuts import render, redirect
+from .models import Book
+from .forms import BookForm
+from django.contrib.auth.decorators import login_required, permission_required
+
+@login_required
+@permission_required('bookshelf.add_book', raise_exception=True)
+def add_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('list_books')
+    else:
+        form = BookForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
