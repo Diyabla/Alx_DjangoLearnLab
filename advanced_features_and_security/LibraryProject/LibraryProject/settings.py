@@ -155,3 +155,33 @@ SECURE_HSTS_PRELOAD = True
 
 
 
+# SECURITY SETTINGS FOR HTTPS AND SECURE COOKIES
+
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+# Explanation: Forces all requests to use HTTPS. Prevents unencrypted communication.
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year in seconds
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+# Explanation: Tells browsers to only access your site via HTTPS for the specified period.
+# Including subdomains and enabling preload improves security.
+
+# Secure cookies
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+# Explanation: Ensures that cookies are only sent over HTTPS. Protects against cookie sniffing.
+
+# Additional security headers
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = "DENY"
+# Explanation:
+# - SECURE_CONTENT_TYPE_NOSNIFF prevents MIME type sniffing attacks.
+# - SECURE_BROWSER_XSS_FILTER enables the browser's XSS protection.
+# - X_FRAME_OPTIONS DENY prevents clickjacking by disallowing the site to be loaded in frames.
+
+# Optional: If your site is behind a proxy (like Nginx or Heroku), you may need:
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# Explanation: Tells Django to trust the X-Forwarded-Proto header for HTTPS detection.
