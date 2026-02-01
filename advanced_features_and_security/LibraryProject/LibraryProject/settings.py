@@ -82,7 +82,11 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'users.CustomUser'
+# LibraryProject/LibraryProject/settings.py
+
+# Tell Django to use the custom user model in bookshelf/models.py
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
+
 
 
 # Password validation
