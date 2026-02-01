@@ -126,6 +126,32 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
+# LibraryProject/settings.py
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False  # Set to False in production
+
+ALLOWED_HOSTS = ['yourdomain.com', 'localhost']  # Add allowed hosts
+
+# Security Headers
+SECURE_BROWSER_XSS_FILTER = True  # Enables browser XSS filtering
+X_FRAME_OPTIONS = 'DENY'          # Prevent clickjacking by denying framing
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevents browser from guessing content type
+
+# Cookies over HTTPS
+CSRF_COOKIE_SECURE = True       # CSRF cookies only sent over HTTPS
+SESSION_COOKIE_SECURE = True    # Session cookies only sent over HTTPS
+
+# CSRF & Session settings
+CSRF_COOKIE_HTTPONLY = True     # Prevent JavaScript from accessing CSRF cookie
+SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript from accessing session cookie
+
+# Optional: HSTS for HTTPS only
+SECURE_HSTS_SECONDS = 3600      # Enforce HTTPS for 1 hour (increase for production)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+
 
 
 
