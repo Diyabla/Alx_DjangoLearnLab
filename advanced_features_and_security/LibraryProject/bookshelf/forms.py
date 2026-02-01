@@ -1,0 +1,16 @@
+# LibraryProject/bookshelf/forms.py
+
+from django import forms
+from .models import Book
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'author', 'publication_year']  # fields to include in the form
+
+        # Optional: add widgets for nicer input handling
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'author': forms.Select(attrs={'class': 'form-control'}),
+            'publication_year': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
