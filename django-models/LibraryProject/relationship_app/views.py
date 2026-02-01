@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book, Library , Author
+from .models import Book, Library, Author
 from django.views.generic import DetailView
 
 # Function-based view: lists all books
